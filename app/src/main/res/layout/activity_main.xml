@@ -28,8 +28,16 @@
     <!-- Spinner Estático -->
     <Spinner
         android:id="@+id/spinner_estatico"
-        android:entries="@array/Pesos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/Pesos" />
+
+    <!-- Spinner Dinâmico -->
+    <Spinner
+        android:id="@+id/spinner_dinamico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>

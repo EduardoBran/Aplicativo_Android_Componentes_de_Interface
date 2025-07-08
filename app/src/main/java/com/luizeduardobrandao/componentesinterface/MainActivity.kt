@@ -3,6 +3,7 @@ package com.luizeduardobrandao.componentesinterface
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.buttonToast.setOnClickListener(this)
         // Componente Snackbar
         binding.buttonSnack.setOnClickListener(this)
+        // Função para carregar os valores do spinner dinâmico
+        loadSpinner()
     }
 
     override fun onClick(v: View){
@@ -65,5 +68,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
+    }
+
+    // Carrega valores no spinner dinâmico
+    private fun loadSpinner(){
+        val list = listOf<String>("Dinamico1", "Dinamico2", "Dinamico3", "Dinamico4")
+
+        // val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, list)
+        // val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+        // val adapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, list)
+
+        binding.spinnerDinamico.adapter = adapter
+
     }
 }
