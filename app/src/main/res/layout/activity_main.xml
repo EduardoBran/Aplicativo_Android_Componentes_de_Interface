@@ -9,11 +9,20 @@
     android:padding="8dp"
     tools:context=".MainActivity">
 
+    <!-- Toast -->
     <Button
         android:id="@+id/button_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Toast me!" />
+
+    <!-- Snackbar -->
+    <Button
+        android:id="@+id/button_snack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Snack me!" />
 
 </LinearLayout>
