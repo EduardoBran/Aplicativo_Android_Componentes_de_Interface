@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,7 +18,9 @@ import com.luizeduardobrandao.componentesinterface.databinding.ActivityMainBindi
 class MainActivity : AppCompatActivity(),
     View.OnClickListener,
     AdapterView.OnItemSelectedListener,
-SeekBar.OnSeekBarChangeListener{
+    SeekBar.OnSeekBarChangeListener,
+    CompoundButton.OnCheckedChangeListener
+{
 
     private lateinit var binding: ActivityMainBinding
 
@@ -49,6 +52,10 @@ SeekBar.OnSeekBarChangeListener{
         // Seekbar (pode atribuir um valor definido para iniciar)
         binding.seekbar.setOnSeekBarChangeListener(this)
         binding.seekbar.progress = 25
+
+        // Componente Switch
+        // binding.switchOnOff.isChecked = true // aplicação inicia com switch marcado.
+        binding.switchOnOff.setOnCheckedChangeListener(this)
     }
 
     override fun onClick(v: View){
@@ -134,5 +141,11 @@ SeekBar.OnSeekBarChangeListener{
 
     override fun onStopTrackingTouch(seekBar: SeekBar) {
         Toast.makeText(this, "Stop tracking", Toast.LENGTH_SHORT).show()
+    }
+
+    // Propriedade de "CompoundButton.OnCheckedChangeListener"
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+        val str = "$isChecked"
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
     }
 }
