@@ -115,11 +115,17 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    // Propriedades de "AdapterView.OnItemSelectedListener"
+    // Propriedades de "AdapterView.OnItemSelectedListener" (Evento de Item Selecionado)
     override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        // parent: AdapterView - Adapter onde a seleção ocorreu
+        // view: View - Layout do elemento clicado
+        // position: Int - Posição do elemento selecionado na lista
+        // id: Long - Posição da linha selecionada
+
         Toast.makeText(this, "$position - $id", Toast.LENGTH_SHORT).show()
     }
 
+    // Evento que pode ser disparado quando o adapter se torna vazio
     override fun onNothingSelected(parent: AdapterView<*>) {
         TODO("Not yet implemented")
     }
@@ -139,14 +145,19 @@ class MainActivity : AppCompatActivity(),
 
     // Propriedades de "SeekBar.OnSeekBarChangeListener"
     override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        // fromUser é true quando a alteração é feita pelo toque no elemento
+        // Se a atribuição é feita por código, fromUser é false
+
         // Recuperando o valor
         binding.textSeekbar.text = "$progress - $fromUser"
     }
 
+    // Quando o componente começa a ser arastado
     override fun onStartTrackingTouch(seekBar: SeekBar) {
         Toast.makeText(this, "Start tracking", Toast.LENGTH_SHORT).show()
     }
 
+    // Trata evento de toque final no Seekbar
     override fun onStopTrackingTouch(seekBar: SeekBar) {
         Toast.makeText(this, "Stop tracking", Toast.LENGTH_SHORT).show()
     }
