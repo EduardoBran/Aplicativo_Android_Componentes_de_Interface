@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity(),
         // Função para carregar os valores do spinner dinâmico
         // loadSpinner()
 
-        // Spinner Eventos
+        // Componente Spinner Eventos
         binding.buttonGetSpinner.setOnClickListener(this)
         binding.buttonSetSpinner.setOnClickListener(this)
         binding.spinnerDinamico.onItemSelectedListener = this
 
-        // Seekbar (pode atribuir um valor definido para iniciar)
+        // Componente Seekbar (pode atribuir um valor definido para iniciar)
         binding.seekbar.setOnSeekBarChangeListener(this)
         binding.seekbar.progress = 25
 
@@ -60,6 +60,10 @@ class MainActivity : AppCompatActivity(),
         // Componente Checkbox
         // binding.checkboxOnOff.isChecked = true // aplicação inicia com checkbox marcado.
         binding.checkboxOnOff.setOnCheckedChangeListener(this)
+
+        // Componente RadioGroup com RadioButtons
+        // binding.radioYes.isChecked = true // aplicação inicia com radiobutton marcado.
+        binding.radioYes.setOnCheckedChangeListener(this)
     }
 
     override fun onClick(v: View){
@@ -161,6 +165,12 @@ class MainActivity : AppCompatActivity(),
             // Checkbox
             R.id.checkbox_on_off -> {
                 val str = "Checkbox: $isChecked"
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+            }
+
+            // RadioGroup com RadioButtons
+            R.id.radio_yes -> {
+                val str = "Radio Yes: $isChecked"
                 Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
             }
         }
