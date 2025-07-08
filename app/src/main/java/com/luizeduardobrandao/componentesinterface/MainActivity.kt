@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,10 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import com.luizeduardobrandao.componentesinterface.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(),
+    View.OnClickListener,
+    AdapterView.OnItemSelectedListener,
+SeekBar.OnSeekBarChangeListener{
 
     private lateinit var binding: ActivityMainBinding
 
@@ -41,6 +45,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         binding.buttonGetSpinner.setOnClickListener(this)
         binding.buttonSetSpinner.setOnClickListener(this)
         binding.spinnerDinamico.onItemSelectedListener = this
+
+        // Seekbar (pode atribuir um valor definido para iniciar)
+        binding.seekbar.setOnSeekBarChangeListener(this)
+        binding.seekbar.progress = 25
     }
 
     override fun onClick(v: View){
@@ -53,6 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 // Exibindo a toast
                 toast.show()
             }
+
 
             // Snackbar
             R.id.button_snack -> {
@@ -73,6 +82,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 snack.show()
             }
 
+
             // Spinner Eventos (utilizando spinner dinamico)
             R.id.button_get_spinner -> {
                 // Retorna o texto do elemento selecionado
@@ -90,6 +100,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         }
     }
 
+    // Propriedades de "AdapterView.OnItemSelectedListener"
     override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
         Toast.makeText(this, "$position - $id", Toast.LENGTH_SHORT).show()
     }
@@ -109,5 +120,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
         binding.spinnerDinamico.adapter = adapter
 
+    }
+
+    // Propriedades de "SeekBar.OnSeekBarChangeListener"
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        // Recuperando o valor
+        binding.textSeekbar.text = "$progress - $fromUser"
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar) {
+        Toast.makeText(this, "Start tracking", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar) {
+        Toast.makeText(this, "Stop tracking", Toast.LENGTH_SHORT).show()
     }
 }
