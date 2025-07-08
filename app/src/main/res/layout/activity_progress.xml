@@ -72,4 +72,35 @@
         android:layout_height="wrap_content"
         android:text="Iniciar Progresso" />
 
+
+    <!-- Texto de status (inicialmente invisível) -->
+    <TextView
+        android:id="@+id/tvProgressStatusInvisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progresso: 0%"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- ProgressBar horizontal determinate (inicialmente invisível) -->
+    <ProgressBar
+        android:id="@+id/progressBarDeterminateInvisible"
+        style="@android:style/Widget.Material.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botão para iniciar simulação de progresso -->
+    <Button
+        android:id="@+id/btnStartProgressInvisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Progresso"
+        android:layout_marginTop="32dp"/>
+
 </LinearLayout>

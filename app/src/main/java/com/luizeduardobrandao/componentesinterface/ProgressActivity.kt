@@ -1,6 +1,7 @@
 package com.luizeduardobrandao.componentesinterface
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,6 +31,9 @@ class ProgressActivity : AppCompatActivity() {
         binding.btnStartProgress.setOnClickListener {
             simulateProgress()
         }
+        binding.btnStartProgressInvisible.setOnClickListener {
+            simulateProgressInvisible()
+        }
     }
 
     private fun simulateProgress(){
@@ -42,6 +46,27 @@ class ProgressActivity : AppCompatActivity() {
                 binding.progressBarDeterminate.progress = i
                 binding.tvProgressStatus.text = "Progresso $i%"
             }
+        }
+    }
+
+    private fun simulateProgressInvisible() {
+        // Desativa botão e revela status e barra
+        binding.btnStartProgressInvisible.isEnabled = false
+        binding.tvProgressStatusInvisible.visibility = View.VISIBLE
+        binding.progressBarDeterminateInvisible.visibility = View.VISIBLE
+
+        lifecycleScope.launch {
+            val max = binding.progressBarDeterminateInvisible.max
+            for (i in 0..max step 5){
+                delay(200) // simula trabalho de background
+                binding.progressBarDeterminateInvisible.progress = i
+                binding.tvProgressStatusInvisible.text = "Progresso: $i%"
+            }
+
+            // Após coonclusão, oculta elementos e reativa botão
+            binding.tvProgressStatusInvisible.visibility = View.GONE
+            binding.progressBarDeterminateInvisible.visibility = View.GONE
+            binding.btnStartProgressInvisible.isEnabled = true
         }
     }
 }
