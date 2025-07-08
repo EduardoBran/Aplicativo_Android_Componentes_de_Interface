@@ -111,6 +111,7 @@
 
     </RadioGroup>
 
+    <!-- Botão para ProgressActivity -->
     <Button
         android:id="@+id/btn_progress_activity"
         android:layout_width="wrap_content"
@@ -118,5 +119,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:text="Tela Progress" />
+
+    <!-- Botão para TimeActivity -->
+    <Button
+        android:id="@+id/btn_time_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Tela Time" />
 
 </LinearLayout>

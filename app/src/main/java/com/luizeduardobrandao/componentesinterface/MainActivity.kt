@@ -68,6 +68,9 @@ class MainActivity : AppCompatActivity(),
 
         // Botão para ir para ProgressActivity
         binding.btnProgressActivity.setOnClickListener(this)
+
+        // Botão para ir para TimeActivity
+        binding.btnTimeActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View){
@@ -121,6 +124,13 @@ class MainActivity : AppCompatActivity(),
             // Ir para Tela de ProgressActivity
             R.id.btn_progress_activity -> {
                 val intent = Intent(this, ProgressActivity::class.java)
+                startActivity(intent)
+            }
+
+
+            // Ir para Tela de TimeActivity
+            R.id.btn_time_activity -> {
+                val intent = Intent(this, TimeActivity::class.java)
                 startActivity(intent)
             }
         }
