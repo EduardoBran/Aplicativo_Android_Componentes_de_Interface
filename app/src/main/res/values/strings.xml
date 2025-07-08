@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ComponentesInterface</string>
+
+    <!-- Valores do Spinner Estático -->
+    <string-array name="Pesos">
+        <item>Gramas</item>
+        <item>kg</item>
+        <item>Tonelada</item>
+    </string-array>
 </resources>

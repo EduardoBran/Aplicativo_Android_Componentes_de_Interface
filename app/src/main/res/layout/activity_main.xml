@@ -25,4 +25,11 @@
         android:layout_gravity="center_horizontal"
         android:text="Snack me!" />
 
+    <!-- Spinner Estático -->
+    <Spinner
+        android:id="@+id/spinner_estatico"
+        android:entries="@array/Pesos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
