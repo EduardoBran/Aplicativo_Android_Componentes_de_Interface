@@ -1,5 +1,6 @@
 package com.luizeduardobrandao.componentesinterface
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -64,6 +65,9 @@ class MainActivity : AppCompatActivity(),
         // Componente RadioGroup com RadioButtons
         // binding.radioYes.isChecked = true // aplicação inicia com radiobutton marcado.
         binding.radioYes.setOnCheckedChangeListener(this)
+
+        // Botão para ir para ProgressActivity
+        binding.btnProgressActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View){
@@ -111,6 +115,13 @@ class MainActivity : AppCompatActivity(),
             R.id.button_set_spinner -> {
                 // Atribui uma posição ao elemento do spinner
                 // binding.spinnerDinamico.setSelection(2)
+            }
+
+
+            // Ir para Tela de ProgressActivity
+            R.id.btn_progress_activity -> {
+                val intent = Intent(this, ProgressActivity::class.java)
+                startActivity(intent)
             }
         }
     }
