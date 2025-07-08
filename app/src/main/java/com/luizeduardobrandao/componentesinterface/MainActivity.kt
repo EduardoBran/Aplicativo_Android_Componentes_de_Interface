@@ -3,6 +3,7 @@ package com.luizeduardobrandao.componentesinterface
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import com.luizeduardobrandao.componentesinterface.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -34,7 +35,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Componente Snackbar
         binding.buttonSnack.setOnClickListener(this)
         // Função para carregar os valores do spinner dinâmico
-        loadSpinner()
+        // loadSpinner()
+
+        // Spinner Eventos
+        binding.buttonGetSpinner.setOnClickListener(this)
+        binding.buttonSetSpinner.setOnClickListener(this)
+        binding.spinnerDinamico.onItemSelectedListener = this
     }
 
     override fun onClick(v: View){
@@ -67,7 +73,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 snack.show()
             }
 
+            // Spinner Eventos (utilizando spinner dinamico)
+            R.id.button_get_spinner -> {
+                // Retorna o texto do elemento selecionado
+                // val str = binding.spinnerDinamico.selectedItem
+                // Retorna a posição/index do elemento selecionado
+                // val id1 = binding.spinnerDinamico.selectedItemId
+                // Também retorna a posição/index do elemento selecionado
+                loadSpinner()
+            }
+
+            R.id.button_set_spinner -> {
+                // Atribui uma posição ao elemento do spinner
+                // binding.spinnerDinamico.setSelection(2)
+            }
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        Toast.makeText(this, "$position - $id", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>) {
+        TODO("Not yet implemented")
     }
 
     // Carrega valores no spinner dinâmico
