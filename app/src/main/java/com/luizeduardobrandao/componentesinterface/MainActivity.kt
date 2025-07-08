@@ -71,6 +71,9 @@ class MainActivity : AppCompatActivity(),
 
         // Botão para ir para TimeActivity
         binding.btnTimeActivity.setOnClickListener(this)
+
+        // Botão para ir para DateActivity
+        binding.btnDateActivity.setOnClickListener(this)
     }
 
     override fun onClick(v: View){
@@ -131,6 +134,13 @@ class MainActivity : AppCompatActivity(),
             // Ir para Tela de TimeActivity
             R.id.btn_time_activity -> {
                 val intent = Intent(this, TimeActivity::class.java)
+                startActivity(intent)
+            }
+
+
+            // Ir para Tela de DateActivity
+            R.id.btn_date_activity -> {
+                val intent = Intent(this, DateActivity::class.java)
                 startActivity(intent)
             }
         }
