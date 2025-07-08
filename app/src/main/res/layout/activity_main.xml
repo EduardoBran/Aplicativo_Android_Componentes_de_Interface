@@ -85,4 +85,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Checkbox -->
+    <CheckBox
+        android:id="@+id/checkbox_on_off"
+        android:text="Checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

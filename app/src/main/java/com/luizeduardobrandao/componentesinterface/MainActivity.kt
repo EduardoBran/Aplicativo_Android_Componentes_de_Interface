@@ -56,6 +56,10 @@ class MainActivity : AppCompatActivity(),
         // Componente Switch
         // binding.switchOnOff.isChecked = true // aplicação inicia com switch marcado.
         binding.switchOnOff.setOnCheckedChangeListener(this)
+
+        // Componente Checkbox
+        // binding.checkboxOnOff.isChecked = true // aplicação inicia com checkbox marcado.
+        binding.checkboxOnOff.setOnCheckedChangeListener(this)
     }
 
     override fun onClick(v: View){
@@ -145,7 +149,20 @@ class MainActivity : AppCompatActivity(),
 
     // Propriedade de "CompoundButton.OnCheckedChangeListener"
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-        val str = "$isChecked"
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+
+        // verificando qual componente está sendo marcado (switch ou checkbox)
+        when (buttonView.id) {
+            // Switch
+            R.id.switch_on_off -> {
+                val str = "Switch: $isChecked"
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+            }
+
+            // Checkbox
+            R.id.checkbox_on_off -> {
+                val str = "Checkbox: $isChecked"
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
